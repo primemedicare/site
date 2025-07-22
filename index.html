@@ -1,15 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Prime Medicare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon | Prime Medicare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; text-align: center; margin-top: 10%; }
-    h1 { color: #0088cc; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e9f5f9, #ffffff);
+      color: #1a202c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .countdown {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .countdown div {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 540px;
+      height: 305px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #999;
+    }
   </style>
 </head>
 <body>
   <h1>Prime Medicare</h1>
-  <p>Our website is coming soon. Stay tuned!</p>
+  <p>We're working hard to launch our new website</p>
+
+  <div class="countdown" id="countdown">
+    <div><span id="days">--</span><br>Days</div>
+    <div><span id="hours">--</span><br>Hours</div>
+    <div><span id="minutes">--</span><br>Minutes</div>
+    <div><span id="seconds">--</span><br>Seconds</div>
+  </div>
+
+  <iframe src="https://3c3b1282.sibforms.com/serve/MUIFAC58v-IzLS8QQmDWxtAoJXn55rv1iAegS0MRIZ-AiFkQSCU0dT7fUdACABgY-X1ls5vjqwg5w_r5RY3wCQB_oeRnicxR--aw6wA6Jt19vJZ71-1kByUepI5AQA48i2Xt-UkBwwKSgIadDBc8F_a_piltnmPVvtrLpTql844aPLaklZcyJ2mYNK_YnG6Wia-li_iBC5zccdrI" scrolling="auto" allowfullscreen></iframe>
+
+  <footer>
+    &copy; 2025 Prime Medicare. All rights reserved.
+  </footer>
+
+  <script>
+    const countdown = () => {
+      const launchDate = new Date("2025-08-15T00:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = launchDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    };
+
+    countdown();
+    setInterval(countdown, 1000);
+  </script>
 </body>
 </html>
